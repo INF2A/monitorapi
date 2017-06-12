@@ -1,13 +1,14 @@
 # monitorapi
 
 This api is made for project Cluster & SmartMirror, it is designed to run on a raspberry pi in a docker container. the application uses a tomcat server in order to work, the default port is 8086. make sure to setup a tomcat server if you havent already. this is a RESTfull api which will return the current status of the cluster in JSON format. http://localhost:8086/monitor/ give you a output if the docker nodes are running(socket test).http://localhost:8086/monitor/{node name} give you a output of the information of containers on the node. 
+
 setup tomcat server
 
 https://www.jetbrains.com/help/idea/2017.1/creating-and-running-your-first-web-application.html
 Examples
 
-To get the default time
-{ip_cluster}:{poort_api}/time
+To get the default information.
+{ip_cluster}:{poort_api}/monitor
 http://localhost:8086/monitor/
 
 JSON feed example:</br>
@@ -21,7 +22,7 @@ JSON feed example:</br>
   "192.168.1.6":false</br>
 }
 
-To get the time of a specific time zone</br>
+To get the container information of a node.
 {ip_cluster}:{port_api}/monitor/{node name}</br>
 http://localhost:8086/monitor/Shanghai
 
