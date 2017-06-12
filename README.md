@@ -26,9 +26,9 @@ JSON feed example:</br>
   "192.168.1.6":false</br>
 }
 
-to get the time of a specific time zone
-{ip_cluster}:{port_api}/time/{Continent}/{Area}
-http://localhost:8080/time/Asia/Seoul
+To get the time of a specific time zone</br>
+{ip_cluster}:{port_api}/monitor/{Name of docker swarm master/slave}</br>
+http://localhost:8086/monitor/Shanghai
 
 JSON feed example
 
