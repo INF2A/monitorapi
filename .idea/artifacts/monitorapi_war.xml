@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="monitorapi:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="monitorapi-monitorapi.war">
+      <element id="artifact" artifact-name="monitorapi:war exploded" />
+    </root>
+  </artifact>
+</component>
