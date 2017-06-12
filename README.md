@@ -15,7 +15,7 @@ to get the default time
 {ip_cluster}:{poort_api}/time
 http://localhost:8086/monitor/
 
-JSON feed example:
+JSON feed example:</br>
 { "192.168.1.1":false,</br>
   "192.168.1.3":false,</br>
   "192.168.1.2":false,</br>
@@ -32,9 +32,9 @@ http://localhost:8080/time/Asia/Seoul
 JSON feed example
 
 
-#Cluster
+<h1>Cluster</h1>
 
 more information about the cluster: https://github.com/INF2A/RPI-docker-cluster
-#SmartMirror
+<h1>SmartMirror</h1>
 
 more information about the SmartMirror: https://github.com/INF2A/Smart-mirror
