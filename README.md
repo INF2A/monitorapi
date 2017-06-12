@@ -16,7 +16,8 @@ to get the default time
 http://localhost:8086/monitor/
 
 JSON feed example:</br>
-{ "192.168.1.1":false,</br>
+{ </br>
+  "192.168.1.1":false,</br>
   "192.168.1.3":false,</br>
   "192.168.1.2":false,</br>
   "192.168.1.5":false,</br>
