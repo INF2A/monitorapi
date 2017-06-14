@@ -35,9 +35,7 @@ public class Shell {
             String s = null;
             while ((s = stdInput.readLine()) != null) {
                 returnValue.add(s);
-                System.out.println(returnValue);
-
-
+                System.out.println(s);
             }
 
             stdInput.close();

@@ -14,6 +14,7 @@ import java.util.List;
 
 @Path("/")
 public class Monitor {
+    //String from ip adressen for the Raspberry Pi's
     String[] ip = {
             "192.168.1.1",
             "192.168.1.2",
@@ -23,8 +24,12 @@ public class Monitor {
             "192.168.1.6",
             "192.168.1.7"
     };
-    String nodeName;
 
+    /***
+     *
+     * @param ip
+     * @return
+     */
     public boolean checkUp(String ip){
         boolean check = false;
         try{
@@ -70,13 +75,15 @@ public class Monitor {
         }
          return Response.status(200).entity(obj.toString()).build();
     }
-
+    //
+    //LOCALHOST:8086/monitor/amsterdam
     @Path("/monitor/{n}")
     @GET
     @Produces("application/json")
     public Response dockerPS(@PathParam("n") String s) {
         JSONObject obj = new JSONObject();  //Instantiate new JSONObject
-        obj.put(s, dockerCommands(s).toString());
+        String[] output = convertOutput(dockerCommands(s).toString());
+        obj.put(s, output);
         //obj.put(s, ); //Put value in JSONObject
         return Response.ok(obj.toString()).build(); /* Return HTTP status code (2xx = OK,
                                                                                 3xx = Redirection,
@@ -87,11 +94,19 @@ public class Monitor {
 
     public List<String> dockerCommands(String command){
         List<String> commands = new ArrayList<>();
-        commands.add("/script.sh");
+        commands.add("/home/eric/Desktop/apache-tomcat-9.0.0.M21/script.sh");
         commands.add(command);
         System.out.println(commands);
         List<String> output = Shell.getInstance().runCommand(commands, false);
         System.out.println(output);
+        return output;
+    }
+
+    public String[] convertOutput(String input){
+        String[] output;
+        String temp;
+        temp = input.replaceAll("[\\[\\](){}:]", "");
+        output = temp.split(" ");
         return output;
     }
 }
