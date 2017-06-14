@@ -20,7 +20,6 @@ public class Shell {
     public List<String> runCommand(List<String> commands, boolean showShellOutputBox)  {
         // Store the shell output
         List<String> returnValue = new ArrayList<String>();
-
         // call the script by creating a new process and starting it
         ProcessBuilder pb2 = new ProcessBuilder(commands);
         pb2.redirectError();
@@ -36,12 +35,16 @@ public class Shell {
             String s = null;
             while ((s = stdInput.readLine()) != null) {
                 returnValue.add(s);
+                System.out.println(returnValue);
+
+
             }
 
             stdInput.close();
         } catch (IOException e) {
             System.out.println(e.toString());
         }
+
         return returnValue;
 
     }

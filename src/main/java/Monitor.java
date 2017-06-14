@@ -87,12 +87,11 @@ public class Monitor {
 
     public List<String> dockerCommands(String command){
         List<String> commands = new ArrayList<>();
-        commands.add("docker");
-        commands.add("node");
-        commands.add("ps");
+        commands.add("/script.sh");
         commands.add(command);
+        System.out.println(commands);
         List<String> output = Shell.getInstance().runCommand(commands, false);
-        //System.out.println(output);
+        System.out.println(output);
         return output;
     }
 }
