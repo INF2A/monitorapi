@@ -26,7 +26,15 @@ To get the container information of a node.</br>
 {ip_cluster}:{port_api}/monitor/{node name}</br>
 http://localhost:8086/monitor/Shanghai
 
-JSON feed example
+JSON feed example:</br>
+{</br>
+  "amsterdam":</br>
+   [</br>
+      "newsapi",</br>
+      "newsapi",</br>
+      "radioapi"</br>
+   ]</br>
+}
 
 
 <h1>Cluster</h1>
