@@ -1,5 +1,6 @@
 package main.java;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,21 +10,25 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Path("/")
 public class Monitor {
-    //String from ip adressen for the Raspberry Pi's
-    String[] ip = {
-            "192.168.1.1",
-            "192.168.1.2",
-            "192.168.1.3",
-            "192.168.1.4",
-            "192.168.1.5",
-            "192.168.1.6",
-            "192.168.1.7"
-    };
+    Map<String, String> ip = new HashMap<>();
+
+    public Monitor()
+    {
+        ip.put("192.168.1.1", "amsterdam");
+        ip.put("192.168.1.2", "shanghai");
+        ip.put("192.168.1.3", "chicago");
+        ip.put("192.168.1.4", "santiago");
+        ip.put("192.168.1.5", "marie");
+        ip.put("192.168.1.6", "melbourne");
+        ip.put("192.168.1.7", "johannesburg");
+    }
 
     /***
      *
@@ -72,18 +77,22 @@ public class Monitor {
     @Produces("application/json")
     public Response monitor() throws Exception {
         JSONObject obj = new JSONObject();
-        //Looks at the lenghte of the array and add true of false(checkup())
-        for(int i =0 ; i < ip.length; i++)
+        JSONObject temp;
+
+        for(Map.Entry<String, String> entry : ip.entrySet())
         {
-            if(checkUp(ip[i]))
+            temp = new JSONObject();
+            if(checkUp(entry.getKey()))
             {
-                obj.put(ip[i], true);
+                temp.put(entry.getKey(), true);
             }
             else
             {
-                obj.put(ip[i], false);
+                temp.put(entry.getKey(), false);
             }
+            obj.put(entry.getValue(), temp);
         }
+
         //build the json file.
          return Response.status(200).entity(obj.toString()).build();/* Return HTTP status code (2xx = OK,
                                                                                 3xx = Redirection,
